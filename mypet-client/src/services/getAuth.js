@@ -7,9 +7,6 @@ const getAuth = async () => {
       password: "franco1234",
     })
     .then(response => {
-      console.log("Well done!");
-      console.log("User profile", response.data.user);
-      console.log("User token", response.data.jwt);
       localStorage.setItem("token", response.data.jwt);
       return response.data.jwt;
     })
