@@ -20,7 +20,7 @@ import {
 function FormAlta() {
   const [data, setData] = useState({
     nombre: "",
-    raza: 0,
+    raza: NaN,
     sexo: "",
     fecha_nacimiento: "",
     fecha_exacta: true,
@@ -53,7 +53,7 @@ function FormAlta() {
   const validate = () => {
     let errors = {};
     if (!data.nombre) errors.nombre = "Ingrese un nombre";
-    if (data.raza === 0) errors.raza = "Seleccione una raza";
+    if (isNaN(data.raza)) errors.raza = "Seleccione una raza";
     if (!data.sexo) errors.sexo = "Seleccione el sexo";
     if (data.fecha_exacta && !data.fecha_nacimiento) errors.fecha_nacimiento = "Ingrese una fecha de nacimiento";
     setErrors(errors);
@@ -86,9 +86,7 @@ function FormAlta() {
         <SelectRaza>
           <label>Raza</label>
           <select placeholder="Raza" name="raza" onChange={handleChange}>
-            <option value="" disabled selected hidden>
-              ¿Qué es?
-            </option>
+            <option value="">¿Qué es?</option>
             {razas &&
               razas.map(raza => {
                 return (
