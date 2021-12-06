@@ -89,13 +89,14 @@ function FormAlta() {
             <option value="" disabled selected hidden>
               ¿Qué es?
             </option>
-            {razas.map(raza => {
-              return (
-                <option key={raza.id} value={raza.id}>
-                  {raza.nombre}
-                </option>
-              );
-            })}
+            {razas &&
+              razas.map(raza => {
+                return (
+                  <option key={raza.id} value={raza.id}>
+                    {raza.nombre}
+                  </option>
+                );
+              })}
           </select>
           <span className="error">{errors.raza ? errors.raza : ""}</span>
         </SelectRaza>
